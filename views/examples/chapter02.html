@@ -12,13 +12,25 @@
 	<div class="input-group mb-3">
 		<input type="text"
 			   class="form-control"
-			   placeholder="create todo list...">
+			   placeholder="입력하세요."
+			   v-model="newTodo">
 		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="button">저장</button>
+			<button class="btn btn-outline-secondary"
+					type="button"
+					v-on:click="add">저장</button>
 		</div>
 	</div>
-	<ul class="list-unstyled" v-for="(item, index) in list">
-		<li>{{item.text + index}}</li>
+	<ul class="list-unstyled" v-for="todo in todos">
+		<li>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" value="">
+					</div>
+				</div>
+				<p class="form-control">{{todo.text}}</p>
+			</div>
+		</li>
 	</ul>
 </div>
 <script src="/dist/vue/bundle.js"></script>
