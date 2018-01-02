@@ -8,8 +8,9 @@ const examples = require('../routers/examples');
 app.use('/static', express.static(path.join(__dirname, '../node_modules')));
 app.use('/css', express.static(path.join(__dirname, '../app/assets/styles')));
 app.use('/js', express.static(path.join(__dirname, '../app/assets/js')));
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use('/images', express.static(path.join(__dirname, '../app/assets/images')));
-app.use('/app', express.static(path.join(__dirname, '.../app')));
+app.use('/components', express.static(path.join(__dirname, '../app/components')));
 
 app.use('/', index);
 app.use('/examples', examples);

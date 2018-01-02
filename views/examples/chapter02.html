@@ -7,7 +7,7 @@
 	<title>TODO List - chapter02</title>
 </head>
 <body>
-<div class="container">
+<div class="container" id="app">
 	<h1>Chapter 02.</h1>
 	<div class="input-group mb-3">
 		<input type="text"
@@ -17,7 +17,11 @@
 			<button class="btn btn-outline-secondary" type="button">저장</button>
 		</div>
 	</div>
-	<ul class="list-unstyled"></ul>
+	<ul class="list-unstyled" v-for="(item, index) in list">
+		<li>{{item.text + index}}</li>
+	</ul>
 </div>
+<script src="/dist/vue/bundle.js"></script>
+<script src="/dist/app/components/examples/chapter02/bundle.js"></script>
 </body>
 </html>
