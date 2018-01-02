@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const app = express();
+const app = express(); 
 
 app.use('/static', express.static(path.join(__dirname, '../node_modules')));
 app.use('/css', express.static(path.join(__dirname, '../app/assets/styles')));
