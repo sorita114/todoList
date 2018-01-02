@@ -1,0 +1,30 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.7",
+    "glob": "^7.1.2",
+    "uglifyjs-webpack-plugin": "^1.1.5",
+    "vue": "^2.5.13",
+    "vue-loader": "^13.6.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "axios": "^0.17.1",
+    "bootstrap": "^4.0.0-beta.3",
+    "express": "^4.16.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
