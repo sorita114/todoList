@@ -13,7 +13,7 @@ const API = {
 		return `${HOST}/v1/todo/${id}`
 	},
 	[GET_TODOLIST]() {
-		return `${HOST}/v1/todo`
+		return `${HOST}/v1/todo?sort=createdDatetime,desc`
 	}
 };
 

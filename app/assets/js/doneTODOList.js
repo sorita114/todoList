@@ -1,17 +1,12 @@
 import axios from 'axios';
 import {
-	DONE_TODOLIST,
-	GET_TODOLIST
+	DONE_TODOLIST
 } from './types';
 import API from './apis';
 
-const doneTODOList = (app, todo) => {
+const doneTODOList = (todo) => {
 	todo.doneDatetime = new Date().getTime();
-	axios
-		.put(API[DONE_TODOLIST](todo.id), todo)
-		.then(() => {
-			app[GET_TODOLIST]();
-		});
+	return axios.put(API[DONE_TODOLIST](todo.id), todo);
 };
 
 export default doneTODOList;

@@ -1,37 +1,23 @@
 import Vue from 'vue';
-import {
-	ADD_TODOLIST,
-	DONE_TODOLIST,
-	GET_TODOLIST
-} from '../../../assets/js/types';
-
-import addTODOList from '../../../assets/js/addTODOList';
-import getTODOList from '../../../assets/js/getTODOList';
-import doneTODOList from '../../../assets/js/doneTODOList';
+import InputField from './InputField';
+import List from './List';
 
 const App = new Vue({
 	el: '#app',
 	data: {
-		newTodo: '',
-		todos: []
+		status : 'init', //add, done
+		totalCount : 0
 	},
-	created() {
-		this[GET_TODOLIST]();
+	components : {
+		InputField,
+		List
 	},
-	methods: {
-		[ADD_TODOLIST]() {
-			addTODOList(this, {
-				text: this.newTodo
-			});
+	methods : {
+		onChangeStatus (status) {
+			return this.status = status;
 		},
-		[DONE_TODOLIST](todo) {
-			doneTODOList(this, todo);
-		},
-		[GET_TODOLIST]() {
-			getTODOList(this);
-		},
-		isActive(todo) {
-			return todo.doneDatetime !== null ? 'active' : '';
+		onSetTotalCount (count) {
+			return this.totalCount = count;
 		}
 	}
 });

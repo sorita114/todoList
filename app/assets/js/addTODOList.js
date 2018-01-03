@@ -1,16 +1,11 @@
 import axios from 'axios';
 import {
-	ADD_TODOLIST,
-	GET_TODOLIST
+	ADD_TODOLIST
 } from './types';
 import API from './apis';
 
-const addTODOList = (app, data) => {
-	axios
-		.post(API[ADD_TODOLIST](), data)
-		.then(() => {
-			app[GET_TODOLIST]();
-		});
+const addTODOList = (data) => {
+	return axios.post(API[ADD_TODOLIST](), data);
 };
 
 export default addTODOList;

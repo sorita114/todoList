@@ -2,12 +2,8 @@ import axios from 'axios';
 import {GET_TODOLIST} from './types';
 import API from './apis';
 
-const getTODOList = (app) => {
-	axios
-		.get(API[GET_TODOLIST]())
-		.then((response) => {
-			app.todos = response.data._embedded.todos;
-		});
+const getTODOList = (pp) => {
+	return axios.get(API[GET_TODOLIST]());
 };
 
 export default getTODOList;
