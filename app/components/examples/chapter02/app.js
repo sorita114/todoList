@@ -3,40 +3,40 @@ import axios from 'axios';
 
 const App = new Vue({
 	el: '#app',
-	data : {
-		todos : [],
-		newTodo : ''
+	data: {
+		newTodo: '',
+		todos : []
 	},
 	created () {
-		getTodo();
+		this.getList();
 	},
 	methods : {
 		add () {
-			addTodo(this, {text: this.newTodo});
+			axios
+				.post('http://localhost:8080/v1/todo', {
+					text: this.newTodo
+				})
+				.then(() => {
+					this.getList();
+				});
+		},
+		done (todo) {
+			todo.doneDatetime = new Date().getTime();
+			axios
+				.put('http://localhost:8080/v1/todo/' + todo.id, todo)
+				.then(() => {
+					this.getList();
+				});
+		},
+		getList () {
+			axios
+				.get('http://localhost:8080/v1/todo')
+				.then((response) => {
+					this.todos = response.data._embedded.todos;
+				});
+		},
+		isActive(todo) {
+			return todo.doneDatetime !== null ? 'active' : '';
 		}
 	}
 });
-
-function addTodo(target, data) {
-	axios
-		.post('http://localhost:8080/v1/todo', data)
-		.then(() => {
-			target.newTodo = '';
-
-			let todos = [data, ...target.todos];
-
-			target.todos = todos;
-		});
-}
-
-function getTodo() {
-	axios
-		.get('http://localhost:8080/v1/todo', {
-			headers : {
-				'Access-Control-Allow-Origin' : '*'
-			}
-		})
-		.then((response) => {
-			App.$set(App._data, 'todos', response.data._embedded.todos);
-		});
-}

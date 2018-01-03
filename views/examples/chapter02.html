@@ -20,12 +20,14 @@
 					v-on:click="add">저장</button>
 		</div>
 	</div>
-	<ul class="list-unstyled" v-for="todo in todos">
-		<li>
+	<ul class="list-unstyled">
+		<li v-for="todo in todos"
+			v-bind:class="isActive(todo)">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<div class="input-group-text">
-						<input type="checkbox" value="">
+						<input type="checkbox"
+						v-on:click="done(todo)">
 					</div>
 				</div>
 				<p class="form-control">{{todo.text}}</p>
