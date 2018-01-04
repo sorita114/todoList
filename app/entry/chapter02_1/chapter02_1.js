@@ -2,15 +2,14 @@ import Vue from 'vue';
 import InputField from '../../components/chapter02_1/InputField';
 import List from '../../components/chapter02_1/List';
 
+Vue.component('InputField', InputField);
+Vue.component('List', List);
+
 const App = new Vue({
 	el: '#app',
 	data: {
 		status : 'init', //add, done
 		totalCount : 0
-	},
-	components : {
-		InputField,
-		List
 	},
 	methods : {
 		onChangeStatus (status) {
