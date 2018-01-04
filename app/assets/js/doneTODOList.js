@@ -5,7 +5,7 @@ import {
 import API from './apis';
 
 const doneTODOList = (todo) => {
-	todo.doneDatetime = new Date().getTime();
+	todo.doneDatetime = !todo.doneDatetime ? new Date().getTime() : null;
 	return axios.put(API[DONE_TODOLIST](todo.id), todo);
 };
 

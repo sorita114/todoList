@@ -1,19 +1,24 @@
-import {DONE_TODOLIST, GET_TODOLIST} from '../../assets/js/types';
 import doneTODOList from '../../assets/js/doneTODOList';
 import getTODOList from '../../assets/js/getTODOList';
+import editTODOList from '../../assets/js/editTODOList';
 
 const template = '<ul class="list-unstyled">' +
 	'<li v-for="todo in todos"' +
-	'v-bind:class="isActive(todo)">'+
-		'<div class="input-group mb-3">' +
-			'<div class="input-group-prepend">'+
-				'<div class="input-group-text">'+
-					'<input type="checkbox"'+
-					'v-on:click="doneTODOList(todo)">' +
-				'</div>' +
+	':class="isActive(todo)">' +
+	'<div class="input-group mb-3">' +
+		'<div class="input-group-prepend">' +
+			'<div class="input-group-text">' +
+				'<input type="checkbox"' +
+				'@click="done(todo)"' +
+				':checked="isDone(todo)">' +
 			'</div>' +
-		'<p class="form-control">{{todo.text}}</p>'+
-		'</div>'+
+		'</div>' +
+		'<input type="text" ' +
+		'@keyup.enter="edit($event, todo)"'+
+		'class="form-control" ' +
+		':disabled="isDone(todo)" '+
+		':value="todo.text">'+
+	'</div>'+
 	'</li>' +
 '</ul>';
 
@@ -29,29 +34,39 @@ const List = {
 		'status'
 	],
 	created () {
-		this[GET_TODOLIST]();
+		this.getList();
 	},
 	watch : {
 		status () {
-			this[GET_TODOLIST]();
+			this.getList();
 		}
 	},
 	methods: {
-		[DONE_TODOLIST](todo) {
+		isDone (todo) {
+			return todo.doneDatetime !== null;
+		},
+		isActive(todo) {
+			return this.isDone(todo) ? 'active' : '';
+		},
+		done (todo) {
 			doneTODOList(todo)
 				.then(() => {
 					this.$emit('changestatus', 'done');
 				});
 		},
-		[GET_TODOLIST]() {
+		getList () {
 			getTODOList()
 				.then((response) => {
 					this.todos = response.data._embedded.todos;
 					this.$emit('totalcount', this.todos.length);
 				});
 		},
-		isActive(todo) {
-			return todo.doneDatetime !== null ? 'active' : '';
+		edit (event, todo) {
+			todo.text = event.target.value;
+			editTODOList(todo)
+				.then(() => {
+					this.$emit('changestatus', 'edit');
+				});
 		}
 	}
 };

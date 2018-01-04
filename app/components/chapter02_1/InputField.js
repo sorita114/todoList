@@ -1,4 +1,3 @@
-import {ADD_TODOLIST} from '../../assets/js/types';
 import addTODOList from "../../assets/js/addTODOList";
 
 const InputField = {
@@ -11,7 +10,7 @@ const InputField = {
 		'<div class="input-group-append">' +
 			'<button type="button"' +
 			'class="btn btn-outline-secondary"' +
-			'v-on:click="addTODOList">' +
+			'@click.prevent="add">' +
 				'저장' +
 			'</button>'+
 		'</div>'+
@@ -22,7 +21,7 @@ const InputField = {
 		}
 	},
 	methods : {
-		[ADD_TODOLIST] () {
+		add () {
 			addTODOList({
 				text : this.text
 			}).then(() => {
