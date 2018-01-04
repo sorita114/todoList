@@ -4,10 +4,10 @@ import removeTODOList from '../../assets/js/removeTODOList';
 import editTODOList from '../../assets/js/editTODOList';
 
 
-const template = '<ul class="list-unstyled">' +
+const template = '<ul class="list-unstyled list-group">' +
 	'<li v-for="todo in todos"' +
-	':class="isActive(todo)">' +
-	'<div class="input-group mb-3">' +
+	'class="list-group-item">' +
+	'<div class="input-group">' +
 		'<div class="input-group-prepend">' +
 			'<div class="input-group-text">' +
 				'<input type="checkbox"' +

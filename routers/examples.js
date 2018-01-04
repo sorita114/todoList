@@ -7,10 +7,11 @@ router
 		"use strict";
 
 		res.sendFile(path.join(__dirname, '../views/examples/chapter02.html'));
-
 	})
-	.get('/chapter02-1', (req, res) => {
-		res.sendFile(path.join(__dirname, '../views/examples/chapter02-1.html'));
+	.get('/chapter02/:id', (req, res) => {
+		"use strict";
+
+		res.sendFile(path.join(__dirname, '../views/examples/chapter02_' + req.params.id +'.html'));
 	})
 	.get('/chapter03', (req, res) => {
 		"use strict";

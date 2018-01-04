@@ -17,6 +17,7 @@ const App = new Vue({
 					text: this.newTodo
 				})
 				.then(() => {
+					this.text = '';
 					this.getList();
 				});
 		},
