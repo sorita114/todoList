@@ -6,6 +6,7 @@ const InputField = {
 		'<input type="text"' +
 				'class="form-control"' +
 				'placeholder="입력하세요." ' +
+				'@keyup.enter="add"'+
 				'v-model="text">' +
 		'<div class="input-group-append">' +
 			'<button type="button"' +
@@ -25,6 +26,7 @@ const InputField = {
 			addTODOList({
 				text : this.text
 			}).then(() => {
+				this.text = '';
 				this.$emit('addlist', 'add');
 			});
 		}

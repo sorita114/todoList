@@ -1,6 +1,8 @@
 import doneTODOList from '../../assets/js/doneTODOList';
 import getTODOList from '../../assets/js/getTODOList';
+import removeTODOList from '../../assets/js/removeTODOList';
 import editTODOList from '../../assets/js/editTODOList';
+
 
 const template = '<ul class="list-unstyled">' +
 	'<li v-for="todo in todos"' +
@@ -18,6 +20,13 @@ const template = '<ul class="list-unstyled">' +
 		'class="form-control" ' +
 		':disabled="isDone(todo)" '+
 		':value="todo.text">'+
+		'<div class="input-group-append">'+
+			'<button type="button"' +
+				'class="btn btn-outline-secondary"' +
+				'@click.prevent="remove(todo.id)">'+
+				'삭제' +
+			'</button>'+
+		'</div>'+
 	'</div>'+
 	'</li>' +
 '</ul>';
@@ -66,6 +75,12 @@ const List = {
 			editTODOList(todo)
 				.then(() => {
 					this.$emit('changestatus', 'edit');
+				});
+		},
+		remove (id) {
+			removeTODOList(id)
+				.then(() => {
+					this.$emit('changestatus', 'remove');
 				});
 		}
 	}
