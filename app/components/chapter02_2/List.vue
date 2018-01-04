@@ -33,7 +33,6 @@
 
 	export default {
 		name: 'List',
-		template,
 		data() {
 			return {
 				todos: []

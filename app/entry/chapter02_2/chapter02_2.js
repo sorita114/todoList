@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import InputField from '../../components/chapter02_1/InputField';
-import List from '../../components/chapter02_1/List';
+import InputField from '../../components/chapter02_2/InputField.vue';
+import List from '../../components/chapter02_2/List.vue';
 
 Vue.component('InputField', InputField);
 Vue.component('List', List);
