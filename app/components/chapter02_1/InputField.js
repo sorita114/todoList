@@ -1,5 +1,5 @@
-import {ADD_TODOLIST} from '../../../assets/js/types';
-import addTODOList from "../../../assets/js/addTODOList";
+import {ADD_TODOLIST} from '../../assets/js/types';
+import addTODOList from "../../assets/js/addTODOList";
 
 const InputField = {
 	name : 'InputField',

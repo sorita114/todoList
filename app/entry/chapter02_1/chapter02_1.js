@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import InputField from './InputField';
-import List from './List';
+import InputField from '../../components/chapter02_1/InputField';
+import List from '../../components/chapter02_1/List';
 
 const App = new Vue({
 	el: '#app',

@@ -1,6 +1,6 @@
-import {DONE_TODOLIST, GET_TODOLIST} from '../../../assets/js/types';
-import doneTODOList from '../../../assets/js/doneTODOList';
-import getTODOList from '../../../assets/js/getTODOList';
+import {DONE_TODOLIST, GET_TODOLIST} from '../../assets/js/types';
+import doneTODOList from '../../assets/js/doneTODOList';
+import getTODOList from '../../assets/js/getTODOList';
 
 const template = '<ul class="list-unstyled">' +
 	'<li v-for="todo in todos"' +

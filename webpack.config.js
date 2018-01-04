@@ -11,7 +11,7 @@ const toObject = (array) => array.reduce((obj, path) => {
 }, {});
 
 module.exports = {
-	entry : toObject(glob.sync('./app/components/**/**/*.js')),
+	entry : toObject(glob.sync('./app/entry/**/*.js')),
 	output : {
 		path : path.resolve(__dirname, './dist'),
 		publicPath : '/dist/',

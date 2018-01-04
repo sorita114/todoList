@@ -11,12 +11,11 @@
 	<h1>Chapter 02-1.</h1>
 	<p>{{totalCount}}</p>
 	<input-field v-on:addlist="onChangeStatus"></input-field>
-	<list
-			v-bind:status="status"
-			v-on:changestatus="onChangeStatus"
+	<list v-bind:status="status"
+		  v-on:changestatus="onChangeStatus"
 			v-on:totalcount="onSetTotalCount"></list>
 </div>
 <script src="/dist/vue/bundle.js"></script>
-<script src="/dist/app/components/examples/chapter02-1/bundle.js"></script>
+<script src="/dist/app/entry/chapter02_1/bundle.js"></script>
 </body>
 </html>
