@@ -1,6 +1,6 @@
 <template>
 	<ul class="list-unstyled list-group">
-		<li v-for="todo in todos"
+		<li v-for="todo in this.$store.getters.todos"
 			class="list-group-item">
 			<div class="input-group">
 				<div class="input-group-prepend">
@@ -26,15 +26,13 @@
 	</ul>
 </template>
 <script>
-	import doneTODOList from '../../assets/js/doneTODOList';
-	import getTODOList from '../../assets/js/getTODOList';
-	import removeTODOList from '../../assets/js/removeTODOList';
-	import editTODOList from '../../assets/js/editTODOList';
-
 	export default {
 		name: 'List',
+		props: [
+			'status'
+		],
 		created () {
-			this.getList();
+			this.$store.dispatch('getList');
 		},
 		methods: {
 			isDone (todo) {
@@ -44,30 +42,15 @@
 				return this.isDone(todo) ? 'active' : '';
 			},
 			done (todo) {
-				doneTODOList(todo)
-					.then(() => {
-						this.$emit('changestatus', 'done');
-					});
+				this.$store.dispatch('doneItem', todo);
 			},
-			getList () {
-				getTODOList()
-					.then((response) => {
-						this.todos = response.data._embedded.todos;
-						this.$emit('totalcount', this.todos.length);
-					});
-			},
-			edit (event, todo) {
-				todo.text = event.target.value;
-				editTODOList(todo)
-					.then(() => {
-						this.$emit('changestatus', 'edit');
-					});
+			edit ({target}, todo) {
+				todo.text = target.value;
+
+				this.$store.dispatch('editItem', todo);
 			},
 			remove (id) {
-				removeTODOList(id)
-					.then(() => {
-						this.$emit('changestatus', 'remove');
-					});
+				this.$store.dispatch('removeItem', id);
 			}
 		}
 	};
