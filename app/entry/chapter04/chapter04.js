@@ -47,13 +47,5 @@ const App = new Vue({
 	created () {
 		this.$store.dispatch(SEARCH_UPDATE, this.$route.query.q);
 		this.$store.dispatch(SEARCH_GET_ITEM);
-	},
-	watch: {
-		'$route'(to, from) {
-			this.$store.dispatch(ROOT_MENU_TYPE_UPDATE, to.meta.menuType);
-			if(to.meta.menuType === 'search' && (to.query && to.query.q)) {
-				this.$store.dispatch(SEARCH_GET_ITEM);
-			}
-		}
 	}
 });

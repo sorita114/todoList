@@ -22,6 +22,9 @@
 					class="list-group-item">
 					{{result.text}}/{{result.createdDatetime}}
 				</li>
+				<li v-if="isEmpty" class="list-group-item bg-warning">
+					검색결과가 없습니다.
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -31,6 +34,7 @@
 	import {
 		SEARCH_VALUE,
 		SEARCH_UPDATE,
+		SEARCH_GET_ITEM,
 		SEARCH_RESULT
 	} from '../../store_1/types';
 	import {mapGetters} from 'vuex';
@@ -46,6 +50,9 @@
 					return this.$store.dispatch(SEARCH_UPDATE, value);
 				}
 			},
+			isEmpty () {
+				return this.$route.query.q !== undefined && this.$store.getters[SEARCH_RESULT].length === 0;
+			},
 			...mapGetters({
 				'searchResult' : SEARCH_RESULT
 			})
@@ -59,6 +66,11 @@
 					}
 				});
 			}
+		},
+		beforeRouteUpdate(to, from, next) {
+			this.$store.dispatch(SEARCH_UPDATE, to.query.q);
+			this.$store.dispatch(SEARCH_GET_ITEM);
+			next();
 		}
 	}
 </script>
