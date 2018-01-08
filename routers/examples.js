@@ -18,6 +18,11 @@ router
 
 		res.sendFile(path.join(__dirname, '../views/examples/chapter03.html'));
 	})
+	.get('/chapter03/:id', (req, res) => {
+		"use strict";
+
+		res.sendFile(path.join(__dirname, '../views/examples/chapter03_' + req.params.id +'.html'));
+	})
 	.get('/chapter04', (req, res) => {
 		"use strict";
 
