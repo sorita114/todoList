@@ -27,6 +27,11 @@ router
 		"use strict";
 
 		res.sendFile(path.join(__dirname, '../views/examples/chapter04.html'));
+	})
+	.get('/chapter04/search', (req, res) => {
+		"use strict";
+
+		res.sendFile(path.join(__dirname, '../views/examples/chapter04.html'));
 	});
 
 module.exports = router;

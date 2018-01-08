@@ -7,17 +7,15 @@
 	<title>TODO List - chapter04</title>
 </head>
 <body>
-<div class="container">
-	<h1>Chapter 04.</h1>
-	<div class="input-group mb-3">
-		<input type="text"
-			   class="form-control"
-			   placeholder="create todo list...">
-		<div class="input-group-append">
-			<button class="btn btn-outline-secondary" type="button">저장</button>
-		</div>
-	</div>
-	<ul class="list-unstyled"></ul>
+<div class="container" id="app">
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="/examples/chapter04">Chapter 04.</a>
+		<router-link to="/examples/chapter04" v-show="menuType !== 'index'">Index</router-link>
+		<router-link to="/examples/chapter04/search" v-show="menuType !== 'search'">Search</router-link>
+	</nav>
+	<router-view></router-view>
 </div>
+<script src="/dist/vue/bundle.js"></script>
+<script src="/dist/app/entry/chapter04/bundle.js"></script>
 </body>
 </html>

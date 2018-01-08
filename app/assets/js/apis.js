@@ -4,6 +4,7 @@ import {
 	EDIT_TODOLIST,
 	UPDATE_TODOLIST,
 	REMOVE_TODOLIST,
+	SEARCH_TODOLIST,
 	GET_TODOLIST
 } from './types';
 
@@ -26,6 +27,9 @@ const API = {
 	},
 	[REMOVE_TODOLIST] (id) {
 		return `${HOST}/v1/todo/${id}`;
+	},
+	[SEARCH_TODOLIST] (value) {
+		return `${HOST}/v1/todo/search/findByTextLike?text=${value}`;
 	}
 };
 
