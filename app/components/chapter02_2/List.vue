@@ -33,6 +33,11 @@
 
 	export default {
 		name: 'List',
+		data () {
+			return {
+				todos: []
+			}
+		},
 		created () {
 			this.getList();
 		},
